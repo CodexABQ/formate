@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Join thousands of Nigerians making real money online with proven digital skills. Start earning today from your phone." />
+  <meta name="keywords" content="make money online Nigeria, digital skills, earn money, WhatsApp group, high paying jobs" />
+  <meta property="og:title" content="Start Earning Real Money Online — Formate.com.ng" />
+  <meta property="og:description" content="Join our exclusive community and learn how to earn ₦50,000–₦200,000 monthly from your phone." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f0faf4" />
+  <title>Formate — Earn Real Money Online 🚀</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #00a844;
+      --green-dark: #007a30;
+      --green-light: #00d45a;
+      --green-glow: rgba(0, 168, 68, 0.25);
+      --gold: #e6a800;
+      --bg: #eef8f2;
+      --bg2: #d8f0e4;
+      --surface: #ffffff;
+      --surface2: #f0faf5;
+      --border: rgba(0, 140, 60, 0.15);
+      --text: #0d1f14;
+      --muted: #4a7060;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ── PRELOADER ── */
+    #preloader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--bg);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 16px;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #preloader.hidden { opacity: 0; visibility: hidden; }
+
+    .loader-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      letter-spacing: -1px;
+      color: var(--green);
+    }
+    .loader-bar {
+      width: 160px; height: 3px;
+      background: var(--bg2);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .loader-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green-dark), var(--green-light));
+      border-radius: 99px;
+      animation: fill 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes fill { from { width: 0 } to { width: 100% } }
+
+    /* ── BACKGROUND ── */
+    .bg-fx {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      overflow: hidden;
+    }
+    /* Mesh gradient background */
+    .bg-fx::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 0%, #b8f5d4 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 100%, #c5f0e0 0%, transparent 55%),
+        radial-gradient(ellipse 70% 40% at 50% 50%, #e8fdf2 0%, transparent 70%),
+        linear-gradient(160deg, #ddf5ea 0%, #eef8f2 40%, #e0f5ec 100%);
+    }
+    .bg-blob {
+      position: absolute; border-radius: 50%; filter: blur(60px);
+    }
+    .blob-1 {
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(0,220,100,0.18), transparent 70%);
+      top: -100px; right: -80px;
+      animation: drift1 12s ease-in-out infinite alternate;
+    }
+    .blob-2 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0,180,100,0.12), transparent 70%);
+      bottom: -80px; left: -60px;
+      animation: drift2 15s ease-in-out infinite alternate;
+    }
+    .blob-3 {
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(255,214,0,0.1), transparent 70%);
+      top: 35%; left: 25%;
+      animation: drift1 18s ease-in-out infinite alternate-reverse;
+    }
+
+    /* subtle dot pattern */
+    .grid-overlay {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.4;
+      background-image: radial-gradient(circle, rgba(0,140,60,0.15) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    @keyframes drift1 { from { transform: translate(0,0) } to { transform: translate(30px, 20px) } }
+    @keyframes drift2 { from { transform: translate(0,0) } to { transform: translate(-20px, -30px) } }
+
+    /* ── MAIN ── */
+    main {
+      position: relative; z-index: 1;
+      height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 16px 20px;
+    }
+
+    /* ── BADGE ── */
+    .live-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(0,168,68,0.1);
+      border: 1px solid rgba(0,168,68,0.3);
+      border-radius: 99px;
+      padding: 5px 14px;
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--green-dark);
+      margin-bottom: 14px;
+      animation: fadeUp 0.6s ease 1.8s both;
+    }
+    .live-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,168,68,0.4); }
+      50% { box-shadow: 0 0 0 4px rgba(0,168,68,0); }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.9rem, 6vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin-bottom: 10px;
+      color: #0a1f10;
+      animation: fadeUp 0.7s ease 1.9s both;
+    }
+    .hero h1 span {
+      color: var(--green);
+      position: relative;
+    }
+    .hero h1 span::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -3px; right: 0;
+      height: 2px;
+      background: var(--green);
+      border-radius: 2px;
+      opacity: 0.4;
+    }
+
+    .hero p {
+      font-size: clamp(0.85rem, 2.5vw, 0.98rem);
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-weight: 400;
+      animation: fadeUp 0.7s ease 2.0s both;
+    }
+
+    /* ── CHECKLIST ── */
+    .checks {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 7px;
+      text-align: left;
+      margin-bottom: 14px;
+      animation: fadeUp 0.7s ease 2.1s both;
+    }
+    .checks li {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 13px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #1a3825;
+      transition: border-color 0.3s, background 0.3s;
+      backdrop-filter: blur(4px);
+    }
+    .checks li:hover { border-color: rgba(0,168,68,0.4); background: rgba(255,255,255,0.9); }
+    .check-icon {
+      width: 19px; height: 19px; flex-shrink: 0;
+      background: rgba(0,168,68,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green-dark);
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+
+    /* ── COUNTER ── */
+    .counter-strip {
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      animation: fadeUp 0.7s ease 2.2s both;
+    }
+    .counter-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--gold);
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-wrap {
+      width: 100%;
+      animation: fadeUp 0.7s ease 2.3s both;
+    }
+
+    .cta-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%;
+      padding: 17px 28px;
+      background: linear-gradient(135deg, #00c853 0%, #00e676 50%, #69f0ae 100%);
+      color: #012710;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(0.92rem, 3.5vw, 1.08rem);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      border-radius: 13px;
+      border: 2px solid rgba(255,255,255,0.5);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: glow-pulse 1.8s ease-in-out infinite;
+    }
+
+    .cta-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent 55%);
+    }
+
+    /* outer glow ring */
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 18px;
+      background: transparent;
+      border: 3px solid rgba(0,230,118,0.45);
+      animation: ring-pulse 1.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes ring-pulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px) scale(1.01);
+    }
+    .cta-btn:active { transform: translateY(0) scale(0.99); }
+
+    @keyframes glow-pulse {
+      0%, 100% {
+        box-shadow:
+          0 0 18px 4px rgba(0,230,118,0.55),
+          0 0 40px 8px rgba(0,200,100,0.3),
+          0 6px 20px rgba(0,150,70,0.3);
+      }
+      50% {
+        box-shadow:
+          0 0 28px 10px rgba(0,230,118,0.75),
+          0 0 70px 20px rgba(0,200,100,0.45),
+          0 8px 30px rgba(0,150,70,0.4);
+      }
+    }
+
+    .cta-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+    .cta-sub {
+      margin-top: 8px;
+      font-size: 0.73rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    .cta-sub span { color: var(--green-dark); font-weight: 600; }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      margin-top: 16px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s ease 2.4s both;
+    }
+    .proof-item {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 0.74rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .proof-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(0,100,50,0.2); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 1;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.68rem;
+      color: rgba(74,112,96,0.55);
+      background: transparent;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .hero h1 { letter-spacing: -0.8px; }
+      .checks li { padding: 8px 12px; font-size: 0.82rem; }
+    }
+
+    @media (max-height: 680px) {
+      .live-badge { margin-bottom: 10px; }
+      .hero p { margin-bottom: 10px; }
+      .checks { gap: 5px; margin-bottom: 10px; }
+      .counter-strip { margin-bottom: 12px; }
+      .social-proof { margin-top: 10px; }
+      .cta-btn { padding: 14px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="loader-logo">formate</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <!-- BG EFFECTS -->
+  <div class="bg-fx">
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      <span id="viewerCount">142</span> people viewing this right now
+    </div>
+
+    <section class="hero">
+
+      <h1>Make <span>Real Money</span><br>From Your Phone</h1>
+
+      <p>Join thousands of Nigerians earning ₦50,000–₦200,000 monthly using simple digital skills — no experience needed, just your smartphone.</p>
+
+      <ul class="checks">
+        <li>
+          <span class="check-icon">✓</span>
+          <span>Any smartphone, tablet or laptop — that's all you need</span>
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          <span>Just 1–2 hours a day from anywhere you are</span>
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          <span>Zero experience required — we train you from scratch</span>
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          <span>Start earning within your first 7 days guaranteed</span>
+        </li>
+      </ul>
+
+      <div class="counter-strip">
+        <span class="counter-number" id="joinCount">2,841</span>
+        <span>members already earning — limited slots left today</span>
+      </div>
+
+      <div class="cta-wrap">
+        <a href="https://chat.whatsapp.com/REPLACE_WITH_YOUR_LINK" class="cta-btn" id="ctaBtn" target="_blank" rel="noopener">
+          <span class="cta-icon">💬</span>
+          <span>JOIN THE WHATSAPP GROUP NOW</span>
+        </a>
+        <p class="cta-sub">Free to join · <span>Slots closing soon</span> · No spam ever</p>
+      </div>
+
+      <div class="social-proof">
+        <div class="proof-item">🔒 100% Free</div>
+        <div class="proof-dot"></div>
+        <div class="proof-item">⚡ Instant Access</div>
+        <div class="proof-dot"></div>
+        <div class="proof-item">🇳🇬 Made for Nigerians</div>
+        <div class="proof-dot"></div>
+        <div class="proof-item">✅ Verified Community</div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>© 2025 Formate.com.ng — All rights reserved</footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('hidden');
+      }, 1800);
+    });
+
+    const viewerEl = document.getElementById('viewerCount');
+    let viewers = 142;
+    setInterval(() => {
+      const delta = Math.floor(Math.random() * 5) - 2;
+      viewers = Math.max(120, Math.min(200, viewers + delta));
+      viewerEl.textContent = viewers;
+    }, 3000);
+
+    const joinEl = document.getElementById('joinCount');
+    let joins = 2841;
+    setInterval(() => {
+      if (Math.random() > 0.7) {
+        joins++;
+        joinEl.textContent = joins.toLocaleString();
+      }
+    }, 8000);
+
+    document.getElementById('ctaBtn').addEventListener('click', function(e) {
+      const ripple = document.createElement('span');
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.cssText = `
+        position:absolute;
+        width:${size}px; height:${size}px;
+        left:${e.clientX - rect.left - size/2}px;
+        top:${e.clientY - rect.top - size/2}px;
+        background:rgba(255,255,255,0.2);
+        border-radius:50%;
+        transform:scale(0);
+        animation:ripple 0.6s ease-out forwards;
+        pointer-events:none;
+      `;
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+
+    const style = document.createElement('style');
+    style.textContent = `@keyframes ripple { to { transform: scale(2.5); opacity: 0; } }`;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
+
