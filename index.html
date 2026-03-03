@@ -43,43 +43,11 @@
       overflow: hidden;
     }
 
-    /* ── PRELOADER ── */
-    #preloader {
-      position: fixed; inset: 0; z-index: 9999;
-      background: var(--bg);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 16px;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-    #preloader.hidden { opacity: 0; visibility: hidden; }
-
-    .loader-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.8rem;
-      letter-spacing: -1px;
-      color: var(--green);
-    }
-    .loader-bar {
-      width: 160px; height: 3px;
-      background: var(--bg2);
-      border-radius: 99px;
-      overflow: hidden;
-    }
-    .loader-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--green-dark), var(--green-light));
-      border-radius: 99px;
-      animation: fill 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    @keyframes fill { from { width: 0 } to { width: 100% } }
-
     /* ── BACKGROUND ── */
     .bg-fx {
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
       overflow: hidden;
     }
-    /* Mesh gradient background */
     .bg-fx::before {
       content: '';
       position: absolute; inset: 0;
@@ -111,7 +79,6 @@
       animation: drift1 18s ease-in-out infinite alternate-reverse;
     }
 
-    /* subtle dot pattern */
     .grid-overlay {
       position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.4;
       background-image: radial-gradient(circle, rgba(0,140,60,0.15) 1px, transparent 1px);
@@ -126,7 +93,7 @@
       position: relative; z-index: 1;
       height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 16px 20px;
+      padding: 10px 20px 30px;
     }
 
     /* ── BADGE ── */
@@ -135,13 +102,13 @@
       background: rgba(0,168,68,0.1);
       border: 1px solid rgba(0,168,68,0.3);
       border-radius: 99px;
-      padding: 5px 14px;
-      font-size: 0.74rem;
+      padding: 4px 13px;
+      font-size: 0.72rem;
       font-weight: 500;
       letter-spacing: 0.03em;
       color: var(--green-dark);
-      margin-bottom: 14px;
-      animation: fadeUp 0.6s ease 1.8s both;
+      margin-bottom: 10px;
+      animation: fadeUp 0.6s ease 0.1s both;
     }
     .live-dot {
       width: 6px; height: 6px; border-radius: 50%;
@@ -163,12 +130,12 @@
     .hero h1 {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(1.9rem, 6vw, 3rem);
+      font-size: clamp(1.65rem, 5.5vw, 2.7rem);
       line-height: 1.08;
       letter-spacing: -1.5px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #0a1f10;
-      animation: fadeUp 0.7s ease 1.9s both;
+      animation: fadeUp 0.7s ease 0.15s both;
     }
     .hero h1 span {
       color: var(--green);
@@ -185,29 +152,29 @@
     }
 
     .hero p {
-      font-size: clamp(0.85rem, 2.5vw, 0.98rem);
+      font-size: clamp(0.8rem, 2.3vw, 0.92rem);
       color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 16px;
+      line-height: 1.55;
+      margin-bottom: 11px;
       font-weight: 400;
-      animation: fadeUp 0.7s ease 2.0s both;
+      animation: fadeUp 0.7s ease 0.2s both;
     }
 
     /* ── CHECKLIST ── */
     .checks {
       list-style: none;
-      display: flex; flex-direction: column; gap: 7px;
+      display: flex; flex-direction: column; gap: 5px;
       text-align: left;
-      margin-bottom: 14px;
-      animation: fadeUp 0.7s ease 2.1s both;
+      margin-bottom: 10px;
+      animation: fadeUp 0.7s ease 0.25s both;
     }
     .checks li {
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center; gap: 9px;
       background: rgba(255,255,255,0.7);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 9px 13px;
-      font-size: 0.85rem;
+      border-radius: 9px;
+      padding: 7px 12px;
+      font-size: 0.82rem;
       font-weight: 400;
       color: #1a3825;
       transition: border-color 0.3s, background 0.3s;
@@ -215,51 +182,52 @@
     }
     .checks li:hover { border-color: rgba(0,168,68,0.4); background: rgba(255,255,255,0.9); }
     .check-icon {
-      width: 19px; height: 19px; flex-shrink: 0;
+      width: 18px; height: 18px; flex-shrink: 0;
       background: rgba(0,168,68,0.12);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: var(--green-dark);
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 700;
     }
 
     /* ── COUNTER ── */
     .counter-strip {
       display: flex; align-items: center; justify-content: center; gap: 7px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--muted);
-      margin-bottom: 16px;
-      animation: fadeUp 0.7s ease 2.2s both;
+      margin-bottom: 12px;
+      animation: fadeUp 0.7s ease 0.3s both;
     }
     .counter-number {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: var(--gold);
     }
 
     /* ── CTA BUTTON ── */
     .cta-wrap {
       width: 100%;
-      animation: fadeUp 0.7s ease 2.3s both;
+      animation: fadeUp 0.7s ease 0.35s both;
     }
 
     .cta-btn {
       display: flex; align-items: center; justify-content: center; gap: 10px;
       width: 100%;
-      padding: 17px 28px;
+      padding: 14px 24px;
       background: linear-gradient(135deg, #00c853 0%, #00e676 50%, #69f0ae 100%);
       color: #012710;
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(0.92rem, 3.5vw, 1.08rem);
+      font-size: clamp(0.88rem, 3.2vw, 1.04rem);
       letter-spacing: 0.03em;
       text-decoration: none;
-      border-radius: 13px;
+      border-radius: 12px;
       border: 2px solid rgba(255,255,255,0.5);
       cursor: pointer;
       position: relative;
+      margin: 20px 5px;
       overflow: hidden;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       animation: glow-pulse 1.8s ease-in-out infinite;
@@ -271,12 +239,11 @@
       background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent 55%);
     }
 
-    /* outer glow ring */
     .cta-btn::after {
       content: '';
       position: absolute;
       inset: -6px;
-      border-radius: 18px;
+      border-radius: 17px;
       background: transparent;
       border: 3px solid rgba(0,230,118,0.45);
       animation: ring-pulse 1.8s ease-in-out infinite;
@@ -288,9 +255,7 @@
       50% { opacity: 1; transform: scale(1.02); }
     }
 
-    .cta-btn:hover {
-      transform: translateY(-2px) scale(1.01);
-    }
+    .cta-btn:hover { transform: translateY(-2px) scale(1.01); }
     .cta-btn:active { transform: translateY(0) scale(0.99); }
 
     @keyframes glow-pulse {
@@ -308,11 +273,11 @@
       }
     }
 
-    .cta-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .cta-icon { font-size: 1.1rem; flex-shrink: 0; }
 
     .cta-sub {
-      margin-top: 8px;
-      font-size: 0.73rem;
+      margin-top: 7px;
+      font-size: 0.71rem;
       color: var(--muted);
       text-align: center;
     }
@@ -320,14 +285,14 @@
 
     /* ── SOCIAL PROOF ── */
     .social-proof {
-      margin-top: 16px;
-      display: flex; align-items: center; justify-content: center; gap: 12px;
+      margin-top: 12px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
       flex-wrap: wrap;
-      animation: fadeUp 0.7s ease 2.4s both;
+      animation: fadeUp 0.7s ease 0.4s both;
     }
     .proof-item {
       display: flex; align-items: center; gap: 5px;
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       color: var(--muted);
       font-weight: 500;
     }
@@ -338,41 +303,48 @@
       position: fixed; bottom: 0; left: 0; right: 0;
       z-index: 1;
       text-align: center;
-      padding: 10px;
-      font-size: 0.68rem;
+      padding: 8px;
+      font-size: 0.66rem;
       color: rgba(74,112,96,0.55);
       background: transparent;
     }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(14px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       .hero h1 { letter-spacing: -0.8px; }
-      .checks li { padding: 8px 12px; font-size: 0.82rem; }
+      .checks li { padding: 6px 11px; font-size: 0.8rem; }
     }
 
-    @media (max-height: 680px) {
-      .live-badge { margin-bottom: 10px; }
-      .hero p { margin-bottom: 10px; }
-      .checks { gap: 5px; margin-bottom: 10px; }
-      .counter-strip { margin-bottom: 12px; }
-      .social-proof { margin-top: 10px; }
-      .cta-btn { padding: 14px 24px; }
+    /* Extra compact for short screens */
+    @media (max-height: 700px) {
+      main { padding: 8px 20px 28px; }
+      .live-badge { margin-bottom: 7px; padding: 3px 11px; font-size: 0.69rem; }
+      .hero h1 { font-size: clamp(1.4rem, 5vw, 2rem); margin-bottom: 6px; }
+      .hero p { font-size: 0.78rem; margin-bottom: 8px; line-height: 1.45; }
+      .checks { gap: 4px; margin-bottom: 8px; }
+      .checks li { padding: 5px 10px; font-size: 0.78rem; }
+      .counter-strip { margin-bottom: 9px; font-size: 0.73rem; }
+      .cta-btn { padding: 12px 20px; font-size: 0.86rem; }
+      .cta-sub { margin-top: 5px; font-size: 0.68rem; }
+      .social-proof { margin-top: 9px; gap: 8px; }
+      .proof-item { font-size: 0.69rem; }
+    }
+
+    @media (max-height: 580px) {
+      .hero p { display: none; }
+      .checks li { padding: 4px 10px; font-size: 0.76rem; }
+      .checks { gap: 3px; margin-bottom: 7px; }
+      .live-badge { margin-bottom: 6px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- PRELOADER -->
-  <div id="preloader">
-    <div class="loader-logo">formate</div>
-    <div class="loader-bar"><div class="loader-fill"></div></div>
-  </div>
 
   <!-- BG EFFECTS -->
   <div class="bg-fx">
@@ -443,12 +415,6 @@
   <footer>© 2025 Formate.com.ng — All rights reserved</footer>
 
   <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('preloader').classList.add('hidden');
-      }, 1800);
-    });
-
     const viewerEl = document.getElementById('viewerCount');
     let viewers = 142;
     setInterval(() => {
