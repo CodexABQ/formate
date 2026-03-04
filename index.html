@@ -11,7 +11,10 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body { height: 100%; }
+    html, body {
+      height: 100%;
+      min-height: 100vh;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -30,6 +33,8 @@
       max-width: 420px;
       width: 100%;
       box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+      /* Center all text content */
+      text-align: center;
     }
 
     /* LIVE BADGE */
@@ -90,13 +95,14 @@
       border-radius: 2px;
     }
 
-    /* CHECKLIST */
+    /* CHECKLIST — centered */
     .checks {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 7px;
       margin-bottom: 11px;
+      text-align: left;
     }
     .checks li {
       display: flex;
@@ -123,6 +129,7 @@
       color: #1a3825;
       line-height: 1.48;
       margin-bottom: 11px;
+      text-align: left;
     }
 
     /* COUNTER */
@@ -133,7 +140,7 @@
       gap: 6px;
       font-size: 0.74rem;
       color: #666;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
     .counter-number {
       font-weight: 700;
@@ -141,52 +148,61 @@
       color: #cc8800;
     }
 
-    /* CTA */
+    /* CTA — animated glowing button */
     .cta-btn {
       display: block;
       width: 100%;
-      padding: 13px;
+      padding: 15px 13px;
       background: #00a844;
       color: #fff;
       font-family: 'Inter', sans-serif;
       font-weight: 700;
-      font-size: 0.91rem;
+      font-size: 0.95rem;
       letter-spacing: 0.04em;
       text-align: center;
       text-decoration: none;
       border-radius: 10px;
-      box-shadow:
-        0 0 12px rgba(0,168,68,0.55),
-        0 0 28px rgba(0,168,68,0.30),
-        0 4px 14px rgba(0,168,68,0.40);
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-bottom: 8px;
+      animation: glow-pulse 2s ease-in-out infinite;
+      transition: background 0.2s, transform 0.15s;
     }
+
+    @keyframes glow-pulse {
+      0%, 100% {
+        box-shadow:
+          0 0 8px rgba(0,168,68,0.5),
+          0 0 18px rgba(0,168,68,0.3),
+          0 4px 14px rgba(0,168,68,0.35);
+      }
+      50% {
+        box-shadow:
+          0 0 20px rgba(0,168,68,0.95),
+          0 0 45px rgba(0,168,68,0.65),
+          0 0 70px rgba(0,168,68,0.35),
+          0 6px 24px rgba(0,168,68,0.55);
+      }
+    }
+
     .cta-btn:hover {
       background: #008f3a;
       transform: translateY(-1px);
-      box-shadow:
-        0 0 18px rgba(0,168,68,0.70),
-        0 0 40px rgba(0,168,68,0.40),
-        0 6px 20px rgba(0,168,68,0.50);
     }
     .cta-btn:active { transform: translateY(0); }
 
     .cta-sub {
-      margin-top: 7px;
+      margin-bottom: 10px;
       text-align: center;
       font-size: 0.71rem;
       color: #888;
     }
     .cta-sub span { color: #007a30; font-weight: 600; }
 
-    /* SOCIAL PROOF */
+    /* SOCIAL PROOF — only 2 items, same line */
     .social-proof {
-      margin-top: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 10px;
     }
     .proof-item {
       font-size: 0.71rem;
@@ -259,11 +275,7 @@
     <div class="social-proof">
       <div class="proof-item">🔒 100% Free</div>
       <div class="proof-dot"></div>
-      <div class="proof-item">⚡ Instant Access</div>
-      <div class="proof-dot"></div>
       <div class="proof-item">🇳🇬 Made for Nigerians</div>
-      <div class="proof-dot"></div>
-      <div class="proof-item">✅ Verified Community</div>
     </div>
 
     <div class="footer">© 2025 Formate.com.ng — All rights reserved</div>
