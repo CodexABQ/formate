@@ -33,7 +33,6 @@
       max-width: 420px;
       width: 100%;
       box-shadow: 0 4px 32px rgba(0,0,0,0.08);
-      /* Center all text content */
       text-align: center;
     }
 
@@ -95,7 +94,7 @@
       border-radius: 2px;
     }
 
-    /* CHECKLIST — centered */
+    /* CHECKLIST */
     .checks {
       list-style: none;
       display: flex;
@@ -148,7 +147,7 @@
       color: #cc8800;
     }
 
-    /* CTA — animated glowing button */
+    /* CTA BUTTON — animated glowing button */
     .cta-btn {
       display: block;
       width: 100%;
@@ -161,8 +160,10 @@
       letter-spacing: 0.04em;
       text-align: center;
       text-decoration: none;
+      border: none;
       border-radius: 10px;
       margin-bottom: 8px;
+      cursor: pointer;
       animation: glow-pulse 2s ease-in-out infinite;
       transition: background 0.2s, transform 0.15s;
     }
@@ -189,6 +190,11 @@
     }
     .cta-btn:active { transform: translateY(0); }
 
+    .cta-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
     .cta-sub {
       margin-bottom: 10px;
       text-align: center;
@@ -197,7 +203,7 @@
     }
     .cta-sub span { color: #007a30; font-weight: 600; }
 
-    /* SOCIAL PROOF — only 2 items, same line */
+    /* SOCIAL PROOF */
     .social-proof {
       display: flex;
       align-items: center;
@@ -221,6 +227,15 @@
       text-align: center;
       font-size: 0.67rem;
       color: #bbb;
+    }
+
+    /* LOADING STATE */
+    .loading-state {
+      display: none;
+      font-size: 0.75rem;
+      color: #00a844;
+      margin-top: 10px;
+      font-weight: 500;
     }
   </style>
 </head>
@@ -266,9 +281,14 @@
       <span>members already earning — limited slots left today</span>
     </div>
 
-    <a href="https://chat.whatsapp.com/KgUuS5UFmTDEpXcJkLwZNP?s=cl&p=a&ilr=2" class="cta-btn" target="_blank" rel="noopener">
+    <!-- UPDATED: Button instead of link, with bypass logic -->
+    <button id="ctaBtn" class="cta-btn">
       💬 JOIN THE GROUP NOW
-    </a>
+    </button>
+
+    <div class="loading-state" id="loadingState">
+      Opening WhatsApp...
+    </div>
 
     <p class="cta-sub">Free to join · <span>Slots closing soon</span> · No spam ever</p>
 
@@ -283,6 +303,58 @@
   </div>
 
   <script>
+    // ============================================
+    // EXTERNAL BROWSER BYPASS CODE
+    // ============================================
+    
+    const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/KgUuS5UFmTDEpXcJkLwZNP";
+    const ctaBtn = document.getElementById('ctaBtn');
+    const loadingState = document.getElementById('loadingState');
+
+    ctaBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Show loading state
+      loadingState.style.display = 'block';
+      ctaBtn.disabled = true;
+      
+      // Detect if on TikTok's in-app browser
+      const isTikTokApp = /TikTok/.test(navigator.userAgent);
+      
+      if (isTikTokApp || window.location.href.includes('tiktok')) {
+        // METHOD 1: Intent-based redirect (Android) - MOST RELIABLE
+        // This forces Android to use system browser instead of in-app webview
+        const intentUrl = `intent://chat.whatsapp.com/KgUuS5UFmTDEpXcJkLwZNP#Intent;scheme=https;package=com.whatsapp;end`;
+        
+        window.location.href = intentUrl;
+        
+        // Fallback if Intent doesn't work (for iOS or if app not installed)
+        setTimeout(() => {
+          // METHOD 2: Force new window with target _blank
+          const link = document.createElement('a');
+          link.href = WHATSAPP_GROUP_LINK;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }, 300);
+      } else {
+        // Direct redirect if not in TikTok
+        window.location.href = WHATSAPP_GROUP_LINK;
+      }
+      
+      // Fallback timeout to ensure something happens
+      setTimeout(() => {
+        loadingState.style.display = 'none';
+        ctaBtn.disabled = false;
+      }, 2000);
+    });
+
+    // ============================================
+    // EXISTING ANIMATIONS (Keep your original code)
+    // ============================================
+    
     const viewerEl = document.getElementById('viewerCount');
     let viewers = 142;
     setInterval(() => {
@@ -303,4 +375,3 @@
 
 </body>
 </html>
-
